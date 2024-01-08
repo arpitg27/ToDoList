@@ -19,15 +19,23 @@ ToDoList {
             System.out.println("4. Enter the Id of task to mark as Complete");
             System.out.println("5. Enter the starting word for the search");
             System.out.println("6. Quit ");
-
             Scanner sc = new Scanner(System.in);
-            int j = sc.nextInt();
 
-            if(j==6){
-                return ;
+            try{
+
+                int j = sc.nextInt();
+                if(j==6){
+                    return ;
+                }
+
+                tasks.perform(j);
+            }catch(Exception e){
+                System.out.println("Something went wrong");
             }
 
-            tasks.perform(j);
+
+
+
 
         }
 
