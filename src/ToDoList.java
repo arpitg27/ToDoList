@@ -1,6 +1,7 @@
 
 import java.util.*;
 import java.time.LocalDate;
+
 class Task{
     int id;
     String task;
@@ -55,7 +56,7 @@ class ToDo{
                 tasks.add(t);
             }catch(Exception e){
                 System.out.println(
-                        "Something went wrong"
+                        "Something went wrong!!"
                 );
             }
 
@@ -72,7 +73,7 @@ class ToDo{
                     }
                 }
             }catch(Exception e){
-                System.out.println("Enter the correct date format");
+                System.out.println("Enter the correct date format!!");
             }
 
 
@@ -84,7 +85,7 @@ class ToDo{
                 tasks.removeIf(t->(t.id==idd));
                 System.out.println("Deletion Succesfull");
             }catch(Exception e){
-                System.out.println("Give the proper output.");
+                System.out.println("Give the proper output!!");
             }
 
         }else if(i==4){
@@ -100,7 +101,7 @@ class ToDo{
                 }
                 System.out.println("Done!");
             }catch(Exception e){
-                System.out.println("Something went wrong");
+                System.out.println("Something went wrong!!");
             }
 
 
@@ -121,7 +122,7 @@ class ToDo{
                 System.out.println(" Done !");
 
             }catch(Exception e){
-                System.out.println("Something went wrong");
+                System.out.println("Something went wrong!!");
             }
         }
     }
