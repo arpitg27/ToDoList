@@ -17,86 +17,103 @@ public class ToDo{
         counter=0;
     }
    public void perform(int i,String j){
-        Scanner sc= new Scanner(System.in);
-        if(i==1){
-            try{
-                System.out.println("Enter the task:- ");
 
-                counter++;
-                Task t = new Task(counter);
-                t.addTask(j);
-                tasks.add(t);
-            }catch(Exception e){
-                System.out.println(
-                        "Something went wrong!!"
-                );
-            }
+        switch(i){
+            case 1:
+                try{
+                    System.out.println("Enter the task:- ");
 
-
-        }else if(i==2){
-
-            try{
-                System.out.println("Enter the date in yyyy-mm-dd   :--");
-
-                LocalDate d= LocalDate.parse(j);
-                for(Task tt:tasks){
-                    if(d.equals(tt.date)){
-                        System.out.println(tt);
-                    }
+                    counter++;
+                    Task t = new Task(counter);
+                    t.addTask(j);
+                    tasks.add(t);
+                }catch(Exception e){
+                    System.out.println(
+                            "Something went wrong!!"
+                    );
                 }
-            }catch(Exception e){
-                System.out.println("Enter the correct date format!!");
-            }
-
-
-
-        }else if(i==3){
-            try{
-                System.out.println("Enter the Id to delete the task:-  ");
-                int idd= Integer.parseInt(j);
-                tasks.removeIf(t->(t.id==idd));
-                System.out.println("Deletion Succesfull");
-            }catch(Exception e){
-                System.out.println("Give the proper output!!");
-            }
-
-        }else if(i==4){
-
-
-            try{
-                System.out.println("Enter the task id which you want to complete");
-                int idd= Integer.parseInt(j);
-                for(Task tt:tasks){
-                    if(tt.id==idd){
-                        tt.changeStatus();
+            break;
+            case 2:
+                try{
+                    System.out.println("Enter the date in yyyy-mm-dd   :--");
+                    boolean flag= false;
+                    LocalDate d= LocalDate.parse(j);
+                    for(Task tt:tasks){
+                        if(d.equals(tt.date)){
+                            flag=true;
+                            System.out.println(tt);
+                        }
                     }
-                }
-                System.out.println("Done!");
-            }catch(Exception e){
-                System.out.println("Something went wrong!!");
-            }
-
-
-        }else if(i==5){
-
-
-            try{
-
-                System.out.println("Enter the first word:-");
-
-                for(Task tt:tasks){
-                    String word[] = tt.task.split(" ");
-                    if(word[0].equals(j)){
-                        System.out.println(tt);
+                    if(!flag){
+                        System.out.println("No Task at given date");
                     }
-
+                }catch(Exception e){
+                    System.out.println("Enter the correct date format!!");
                 }
-                System.out.println(" Done !");
+                break;
 
-            }catch(Exception e){
-                System.out.println("Something went wrong!!");
-            }
+            case 3:
+                try{
+                    System.out.println("Enter the Id to delete the task:-  ");
+                    int idd= Integer.parseInt(j);
+                    int initialLength= tasks.size();
+                    tasks.removeIf(t->(t.id==idd));
+                    int finalLength=tasks.size();
+                    if(initialLength==finalLength){
+                        System.out.println("No task with this Id");
+                    }else
+                        System.out.println("Deletion Succesfull");
+                }catch(Exception e){
+                    System.out.println("Give the proper output!!");
+                }
+                break;
+            case 4:
+                try{
+                    System.out.println("Enter the task id which you want to complete");
+                    int idd= Integer.parseInt(j);
+                    boolean flag=false;
+                    for(Task tt:tasks){
+                        if(tt.id==idd){
+                            flag=true;
+                            tt.changeStatus();
+                        }
+                    }
+                    if(!flag){
+                        System.out.println("No Task with this Id");
+                    }else
+                        System.out.println("Done!");
+                }catch(Exception e){
+                    System.out.println("Something went wrong!!");
+                }
+                break;
+
+            case 5:
+
+                try{
+
+                    System.out.println("Enter the first word:-");
+                    boolean flag=false;
+                    for(Task tt:tasks){
+                        String word[] = tt.task.split(" ");
+                        if(word[0].equals(j)){
+                            flag=true;
+                            System.out.println(tt);
+                        }
+                    }
+                    if(!flag){
+                        System.out.println("No task with this word");
+                    }else
+                        System.out.println(" Done !");
+
+                }catch(Exception e){
+                    System.out.println("Something went wrong!!");
+                }
+                break;
+
+            default:
+                System.out.println("Enter correct choices from the action");
         }
+
     }
 
 

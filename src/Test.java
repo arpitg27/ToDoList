@@ -13,6 +13,7 @@ public class Test {
        tests.add("2 2024-01-09");
        tests.add("3 2");
        tests.add("2 2024-01-09");
+       tests.add("3 6");
        tests.add("4 3");
        tests.add("5 I");
        tests.add("2 2024-01-09");

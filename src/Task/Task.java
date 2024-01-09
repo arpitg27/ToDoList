@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Task{
   public int id;
   public  String task;
-  public   LocalDate date;
+ public LocalDate date;
    public String status;
 
     public Task(int id){
