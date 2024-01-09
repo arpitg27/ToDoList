@@ -4,27 +4,27 @@ import Task.Task;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ToDo{
-    ArrayList<Task> tasks;
+    List<Task> tasks;
     int counter;
 
    public ToDo()
     {
         tasks= new ArrayList<Task>();
         counter=0;
-
     }
-   public void perform(int i){
+   public void perform(int i,String j){
         Scanner sc= new Scanner(System.in);
         if(i==1){
             try{
                 System.out.println("Enter the task:- ");
-                String s = sc.nextLine();
+
                 counter++;
                 Task t = new Task(counter);
-                t.addTask(s);
+                t.addTask(j);
                 tasks.add(t);
             }catch(Exception e){
                 System.out.println(
@@ -37,8 +37,8 @@ public class ToDo{
 
             try{
                 System.out.println("Enter the date in yyyy-mm-dd   :--");
-                String s = sc.nextLine();
-                LocalDate d= LocalDate.parse(s);
+
+                LocalDate d= LocalDate.parse(j);
                 for(Task tt:tasks){
                     if(d.equals(tt.date)){
                         System.out.println(tt);
@@ -53,7 +53,7 @@ public class ToDo{
         }else if(i==3){
             try{
                 System.out.println("Enter the Id to delete the task:-  ");
-                int idd= sc.nextInt();
+                int idd= Integer.parseInt(j);
                 tasks.removeIf(t->(t.id==idd));
                 System.out.println("Deletion Succesfull");
             }catch(Exception e){
@@ -65,7 +65,7 @@ public class ToDo{
 
             try{
                 System.out.println("Enter the task id which you want to complete");
-                int idd= sc.nextInt();
+                int idd= Integer.parseInt(j);
                 for(Task tt:tasks){
                     if(tt.id==idd){
                         tt.changeStatus();
@@ -83,10 +83,10 @@ public class ToDo{
             try{
 
                 System.out.println("Enter the first word:-");
-                String s= sc.next();
+
                 for(Task tt:tasks){
                     String word[] = tt.task.split(" ");
-                    if(word[0].equals(s)){
+                    if(word[0].equals(j)){
                         System.out.println(tt);
                     }
 
